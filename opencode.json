@@ -9,7 +9,8 @@
   ],
   "plugin": [
     "./plugins",
-    "opencode-antigravity-auth@latest"
+    "opencode-antigravity-auth@latest",
+    "opencode-antigravity-quota@latest"
   ],
   "provider": {
     "google": {
@@ -67,6 +68,23 @@
           "name": "Gemini 3 Pro Preview (Gemini CLI)",
           "limit": { "context": 1048576, "output": 65535 },
           "modalities": { "input": ["text", "image", "pdf"], "output": ["text"] }
+        },
+        "antigravity-gemini-3.1-pro-preview-customtools": {
+          "name": "Gemini 3.1 Pro Preview CustomTools (Antigravity)",
+          "limit": { "context": 1048576, "output": 65535 },
+          "modalities": { "input": ["text", "image", "pdf"], "output": ["text"] },
+          "variants": {
+            "low": { "thinkingLevel": "low" },
+            "high": { "thinkingLevel": "high" }
+          }
+        }
+      }
+    },
+    "openai": {
+      "models": {
+        "gpt-5.3-codex": {
+          "name": "GPT 5.3 Codex (ChatGPT Plus OAuth)",
+          "limit": { "context": 200000, "output": 100000 }
         }
       }
     }
@@ -223,6 +241,114 @@
         "bash": true,
         "write": true,
         "edit": true
+      }
+    },
+
+    "planner-opus": {
+      "description": "Planner powered by Claude Opus 4.6. ONLY use when explicitly requesting diverse model opinions alongside planner-gemini and planner-gpt for multi-model consensus.",
+      "mode": "subagent",
+      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "prompt": "{file:prompts/agents/planner.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "planner-gemini": {
+      "description": "Planner powered by Gemini 3.1 Pro. ONLY use when explicitly requesting diverse model opinions alongside planner-opus and planner-gpt for multi-model consensus.",
+      "mode": "subagent",
+      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "prompt": "{file:prompts/agents/planner.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "planner-gpt": {
+      "description": "Planner powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside planner-opus and planner-gemini for multi-model consensus.",
+      "mode": "subagent",
+      "model": "openai/gpt-5.3-codex",
+      "prompt": "{file:prompts/agents/planner.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+
+    "architect-opus": {
+      "description": "Architect powered by Claude Opus 4.6. ONLY use when explicitly requesting diverse model opinions alongside architect-gemini and architect-gpt for multi-model consensus.",
+      "mode": "subagent",
+      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "prompt": "{file:prompts/agents/architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "architect-gemini": {
+      "description": "Architect powered by Gemini 3.1 Pro. ONLY use when explicitly requesting diverse model opinions alongside architect-opus and architect-gpt for multi-model consensus.",
+      "mode": "subagent",
+      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "prompt": "{file:prompts/agents/architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "architect-gpt": {
+      "description": "Architect powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside architect-opus and architect-gemini for multi-model consensus.",
+      "mode": "subagent",
+      "model": "openai/gpt-5.3-codex",
+      "prompt": "{file:prompts/agents/architect.txt}",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+
+    "general-opus": {
+      "description": "General-purpose reasoning agent powered by Claude Opus 4.6. Use for deep reasoning tasks with Opus specifically, or for diverse model opinions alongside general-gemini and general-gpt.",
+      "mode": "subagent",
+      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "general-gemini": {
+      "description": "General-purpose reasoning agent powered by Gemini 3.1 Pro. Use for high-context reasoning with Gemini specifically, or for diverse model opinions alongside general-opus and general-gpt.",
+      "mode": "subagent",
+      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
+      }
+    },
+    "general-gpt": {
+      "description": "General-purpose reasoning agent powered by GPT 5.3 Codex. Use for reasoning with GPT specifically, or for diverse model opinions alongside general-opus and general-gemini.",
+      "mode": "subagent",
+      "model": "openai/gpt-5.3-codex",
+      "tools": {
+        "read": true,
+        "bash": true,
+        "write": false,
+        "edit": false
       }
     }
   },
@@ -433,6 +559,10 @@
     "evolve": {
       "description": "Cluster instincts into skills",
       "template": "{file:commands/evolve.md}\n\n$ARGUMENTS"
+    },
+    "antigravity-quota": {
+      "description": "Get the remaining quotas for antigravity models",
+      "template": "{file:command/antigravity-quota.md}\n\n$ARGUMENTS"
     }
   },
   "permission": {
