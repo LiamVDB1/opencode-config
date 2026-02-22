@@ -83,8 +83,29 @@
     "openai": {
       "models": {
         "gpt-5.3-codex": {
-          "name": "GPT 5.3 Codex (ChatGPT Plus OAuth)",
+          "name": "GPT 5.3 Codex",
           "limit": { "context": 200000, "output": 100000 }
+        }
+      }
+    },
+    "litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM",
+      "options": {
+        "baseURL": "http://localhost:4000/v1"
+      },
+      "models": {
+        "glm-5": {
+          "name": "GLM-5"
+        },
+        "kimi-k2.5": {
+          "name": "Kimi K2.5"
+        },
+        "gpt-oss-120b": {
+          "name": "GPT-OSS-120B"
+        },
+        "qwen-3.5-nim": {
+          "name": "Qwen"
         }
       }
     }
