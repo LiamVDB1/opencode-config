@@ -265,10 +265,10 @@
       }
     },
 
-    "planner-opus": {
-      "description": "Planner powered by Claude Opus 4.6. ONLY use when explicitly requesting diverse model opinions alongside planner-gemini and planner-gpt for multi-model consensus.",
+    "planner-glm": {
+      "description": "Planner powered by GLM-5. ONLY use when explicitly requesting diverse model opinions alongside planner-kimi and planner-gpt for multi-model consensus.",
       "mode": "subagent",
-      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "model": "litellm/glm-5",
       "prompt": "{file:prompts/agents/planner.txt}",
       "tools": {
         "read": true,
@@ -277,10 +277,10 @@
         "edit": false
       }
     },
-    "planner-gemini": {
-      "description": "Planner powered by Gemini 3.1 Pro. ONLY use when explicitly requesting diverse model opinions alongside planner-opus and planner-gpt for multi-model consensus.",
+    "planner-kimi": {
+      "description": "Planner powered by Kimi K2.5. ONLY use when explicitly requesting diverse model opinions alongside planner-glm and planner-gpt for multi-model consensus.",
       "mode": "subagent",
-      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "model": "litellm/kimi-k2.5",
       "prompt": "{file:prompts/agents/planner.txt}",
       "tools": {
         "read": true,
@@ -290,7 +290,7 @@
       }
     },
     "planner-gpt": {
-      "description": "Planner powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside planner-opus and planner-gemini for multi-model consensus.",
+      "description": "Planner powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside planner-glm and planner-kimi for multi-model consensus.",
       "mode": "subagent",
       "model": "openai/gpt-5.3-codex",
       "prompt": "{file:prompts/agents/planner.txt}",
@@ -302,10 +302,10 @@
       }
     },
 
-    "architect-opus": {
-      "description": "Architect powered by Claude Opus 4.6. ONLY use when explicitly requesting diverse model opinions alongside architect-gemini and architect-gpt for multi-model consensus.",
+    "architect-glm": {
+      "description": "Architect powered by GLM-5. ONLY use when explicitly requesting diverse model opinions alongside architect-kimi and architect-gpt for multi-model consensus.",
       "mode": "subagent",
-      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "model": "litellm/glm-5",
       "prompt": "{file:prompts/agents/architect.txt}",
       "tools": {
         "read": true,
@@ -314,10 +314,10 @@
         "edit": false
       }
     },
-    "architect-gemini": {
-      "description": "Architect powered by Gemini 3.1 Pro. ONLY use when explicitly requesting diverse model opinions alongside architect-opus and architect-gpt for multi-model consensus.",
+    "architect-kimi": {
+      "description": "Architect powered by Kimi K2.5. ONLY use when explicitly requesting diverse model opinions alongside architect-glm and architect-gpt for multi-model consensus.",
       "mode": "subagent",
-      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "model": "litellm/kimi-k2.5",
       "prompt": "{file:prompts/agents/architect.txt}",
       "tools": {
         "read": true,
@@ -327,7 +327,7 @@
       }
     },
     "architect-gpt": {
-      "description": "Architect powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside architect-opus and architect-gemini for multi-model consensus.",
+      "description": "Architect powered by GPT 5.3 Codex. ONLY use when explicitly requesting diverse model opinions alongside architect-glm and architect-kimi for multi-model consensus.",
       "mode": "subagent",
       "model": "openai/gpt-5.3-codex",
       "prompt": "{file:prompts/agents/architect.txt}",
@@ -339,10 +339,10 @@
       }
     },
 
-    "general-opus": {
-      "description": "General-purpose reasoning agent powered by Claude Opus 4.6. Use for deep reasoning tasks with Opus specifically, or for diverse model opinions alongside general-gemini and general-gpt.",
+    "general-glm": {
+      "description": "General-purpose reasoning agent powered by GLM-5. Use for deep reasoning tasks with GLM specifically, or for diverse model opinions alongside general-kimi and general-gpt.",
       "mode": "subagent",
-      "model": "google/antigravity-claude-opus-4-6-thinking",
+      "model": "litellm/glm-5",
       "tools": {
         "read": true,
         "bash": true,
@@ -350,10 +350,10 @@
         "edit": false
       }
     },
-    "general-gemini": {
-      "description": "General-purpose reasoning agent powered by Gemini 3.1 Pro. Use for high-context reasoning with Gemini specifically, or for diverse model opinions alongside general-opus and general-gpt.",
+    "general-kimi": {
+      "description": "General-purpose reasoning agent powered by Kimi K2.5. Use for high-context reasoning with Kimi specifically, or for diverse model opinions alongside general-glm and general-gpt.",
       "mode": "subagent",
-      "model": "google/antigravity-gemini-3.1-pro-preview-customtools",
+      "model": "litellm/kimi-k2.5",
       "tools": {
         "read": true,
         "bash": true,
@@ -362,7 +362,7 @@
       }
     },
     "general-gpt": {
-      "description": "General-purpose reasoning agent powered by GPT 5.3 Codex. Use for reasoning with GPT specifically, or for diverse model opinions alongside general-opus and general-gemini.",
+      "description": "General-purpose reasoning agent powered by GPT 5.3 Codex. Use for reasoning with GPT specifically, or for diverse model opinions alongside general-glm and general-kimi.",
       "mode": "subagent",
       "model": "openai/gpt-5.3-codex",
       "tools": {
